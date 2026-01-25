@@ -1,0 +1,347 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Senior Developer Portfolio - Professional Emerald/Teal Theme */
+
+@layer base {
+  :root {
+    /* Professional Emerald/Teal - Easy on Eyes */
+    --background: 160 20% 97%;
+    --foreground: 170 25% 12%;
+
+    --card: 160 15% 99%;
+    --card-foreground: 170 25% 12%;
+
+    --popover: 160 15% 99%;
+    --popover-foreground: 170 25% 12%;
+
+    --primary: 162 72% 38%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 160 20% 92%;
+    --secondary-foreground: 170 25% 15%;
+
+    --muted: 160 15% 90%;
+    --muted-foreground: 170 15% 40%;
+
+    --accent: 185 75% 40%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 160 18% 85%;
+    --input: 160 18% 85%;
+    --ring: 162 72% 38%;
+
+    --radius: 0.75rem;
+
+    /* Custom Portfolio Colors - Light Mode */
+    --gradient-start: 162 72% 38%;
+    --gradient-end: 185 75% 40%;
+    --glow: 170 70% 45%;
+    --surface: 160 20% 97%;
+    --surface-elevated: 160 15% 99%;
+    --text-primary: 170 25% 12%;
+    --text-secondary: 170 15% 35%;
+    --text-muted: 170 12% 50%;
+
+    /* Cursor Glow - Soft teal */
+    --cursor-glow: 170 70% 45%;
+    --cursor-glow-secondary: 185 75% 45%;
+  }
+
+  .dark {
+    --background: 170 25% 7%;
+    --foreground: 160 20% 95%;
+
+    --card: 170 22% 10%;
+    --card-foreground: 160 20% 95%;
+
+    --popover: 170 22% 10%;
+    --popover-foreground: 160 20% 95%;
+
+    --primary: 162 65% 50%;
+    --primary-foreground: 170 25% 7%;
+
+    --secondary: 170 20% 15%;
+    --secondary-foreground: 160 20% 92%;
+
+    --muted: 170 18% 18%;
+    --muted-foreground: 165 12% 55%;
+
+    --accent: 185 70% 52%;
+    --accent-foreground: 170 25% 7%;
+
+    --destructive: 0 62% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 170 18% 18%;
+    --input: 170 18% 18%;
+    --ring: 162 65% 50%;
+
+    /* Custom Portfolio Colors - Dark Mode */
+    --gradient-start: 162 65% 50%;
+    --gradient-end: 185 70% 52%;
+    --glow: 170 65% 50%;
+    --surface: 170 25% 8%;
+    --surface-elevated: 170 22% 12%;
+    --text-primary: 160 20% 95%;
+    --text-secondary: 165 12% 65%;
+    --text-muted: 165 10% 50%;
+
+    /* Cursor Glow - Vibrant teal for dark mode */
+    --cursor-glow: 170 70% 50%;
+    --cursor-glow-secondary: 185 75% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  ::selection {
+    @apply bg-primary/30 text-foreground;
+  }
+}
+
+@layer components {
+  /* Gradient Text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+  }
+
+  /* Glass Card */
+  .glass-card {
+    @apply bg-surface-elevated/80 backdrop-blur-xl border border-border/50 rounded-2xl;
+  }
+
+  /* Glass Card Light Mode Enhanced */
+  :root .glass-card {
+    box-shadow: 0 4px 20px -5px rgba(0, 0, 0, 0.08),
+                0 2px 8px -3px rgba(0, 0, 0, 0.05);
+  }
+
+  /* Glow Effect */
+  .glow {
+    box-shadow: 0 0 40px hsl(var(--glow) / 0.15),
+                0 0 80px hsl(var(--glow) / 0.1);
+  }
+
+  .glow-sm {
+    box-shadow: 0 0 20px hsl(var(--glow) / 0.2);
+  }
+
+  /* Moving Border Animation */
+  .moving-border {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .moving-border::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: conic-gradient(from var(--angle, 0deg), 
+      hsl(var(--primary)), 
+      hsl(var(--accent)), 
+      hsl(var(--primary)));
+    animation: rotate-border 3s linear infinite;
+    border-radius: inherit;
+    z-index: -1;
+  }
+
+  .moving-border::after {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    background: hsl(var(--card));
+    border-radius: inherit;
+    z-index: -1;
+  }
+
+  @property --angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+  }
+
+  @keyframes rotate-border {
+    to {
+      --angle: 360deg;
+    }
+  }
+
+  /* Shimmer Effect */
+  .shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .shimmer::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      hsl(var(--primary) / 0.1),
+      transparent
+    );
+    animation: shimmer 2s infinite;
+    transform: translateX(-100%);
+  }
+
+  @keyframes shimmer {
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  /* Float Animation */
+  .float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  /* Pulse Glow */
+  .pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+    }
+    50% {
+      box-shadow: 0 0 40px hsl(var(--primary) / 0.6);
+    }
+  }
+
+  /* Gradient Border */
+  .gradient-border {
+    position: relative;
+    background: linear-gradient(hsl(var(--card)), hsl(var(--card))) padding-box,
+                linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent))) border-box;
+    border: 2px solid transparent;
+  }
+
+  /* Section Styles */
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32;
+  }
+
+  .section-title {
+    @apply text-3xl sm:text-4xl lg:text-5xl font-bold mb-4;
+  }
+
+  .section-subtitle {
+    @apply text-muted-foreground text-lg max-w-2xl;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-muted/30;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary/50 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary/70;
+  }
+
+  /* Light mode enhancements */
+  :root section {
+    @apply bg-background;
+  }
+
+  :root .bg-secondary\/30 {
+    background-color: hsl(var(--secondary) / 0.5);
+  }
+}
+
+@layer utilities {
+  .bg-surface {
+    background-color: hsl(var(--surface));
+  }
+
+  .bg-surface-elevated {
+    background-color: hsl(var(--surface-elevated));
+  }
+
+  .text-text-primary {
+    color: hsl(var(--text-primary));
+  }
+
+  .text-text-secondary {
+    color: hsl(var(--text-secondary));
+  }
+
+  .text-text-muted {
+    color: hsl(var(--text-muted));
+  }
+
+  /* Grid Pattern */
+  .bg-grid {
+    background-image: 
+      linear-gradient(hsl(var(--border) / 0.3) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border) / 0.3) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  /* Dot Pattern */
+  .bg-dots {
+    background-image: radial-gradient(hsl(var(--border)) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  /* Noise Texture */
+  .noise {
+    position: relative;
+  }
+
+  .noise::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Image scroll animation for projects */
+  .project-image-scroll {
+    transition: transform 3s ease-in-out;
+  }
+
+  .project-image-scroll:hover {
+    transform: translateY(calc(-100% + 192px));
+  }
+}
