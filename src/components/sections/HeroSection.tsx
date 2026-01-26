@@ -9,12 +9,16 @@ import {
   Download,
   ChevronDown,
   Eye,
+  Rocket,
+  Briefcase,
 } from "lucide-react";
 import {
   IconBrandReact,
   IconBrandNodejs,
   IconBrandTypescript,
   IconBrandMongodb,
+  IconBrandNextjs,
+  IconPhone,
 } from "@tabler/icons-react";
 import TypewriterText from "@/components/effects/TypewriterText";
 import MovingBorderButton from "@/components/effects/MovingBorderButton";
@@ -45,11 +49,11 @@ const techBadges = [
     borderColor: "border-sky-500/30",
   },
   {
-    name: "Node.js",
-    Icon: IconBrandNodejs,
-    bgColor: "bg-emerald-500/10",
-    textColor: "text-emerald-500",
-    borderColor: "border-emerald-500/30",
+    name: "Next.js",
+    Icon: IconBrandNextjs,
+    bgColor: "bg-slate-500/10",
+    textColor: "text-slate-500",
+    borderColor: "border-slate-500/30",
   },
   {
     name: "TypeScript",
@@ -59,11 +63,25 @@ const techBadges = [
     borderColor: "border-blue-500/30",
   },
   {
+    name: "Node.js",
+    Icon: IconBrandNodejs,
+    bgColor: "bg-emerald-500/10",
+    textColor: "text-emerald-500",
+    borderColor: "border-emerald-500/30",
+  },
+  {
     name: "MongoDB",
     Icon: IconBrandMongodb,
     bgColor: "bg-green-500/10",
     textColor: "text-green-500",
     borderColor: "border-green-500/30",
+  },
+  {
+    name: "PostgreSQL",
+    Icon: IconBrandMongodb,
+    bgColor: "bg-indigo-500/10",
+    textColor: "text-indigo-500",
+    borderColor: "border-indigo-500/30",
   },
 ];
 
@@ -109,26 +127,26 @@ const socialLinks = [
     name: "GitHub",
     icon: Github,
     href: "https://github.com/ShailySarker",
-    hoverColor:
-      "hover:bg-gray-800 hover:text-white dark:hover:bg-white dark:hover:text-gray-900",
   },
   {
     name: "LinkedIn",
     icon: Linkedin,
-    href: "https://linkedin.com",
-    hoverColor: "hover:bg-[#0077B5] hover:text-white",
+    href: "https://www.linkedin.com/in/shaily-sarker-905757387",
   },
   {
     name: "Gmail",
     icon: Mail,
     href: "mailto:shailysarker11@gmail.com",
-    hoverColor: "hover:bg-[#EA4335] hover:text-white",
   },
   {
     name: "WhatsApp",
     icon: MessageCircle,
-    href: "https://wa.me/1234567890",
-    hoverColor: "hover:bg-[#25D366] hover:text-white",
+    href: "https://wa.me/8801730465918",
+  },
+  {
+    name: "Phone",
+    icon: IconPhone,
+    href: "tel:+8801730465918",
   },
 ];
 
@@ -136,13 +154,13 @@ const HeroSection = () => {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-grid"
     >
       {/* Background Effects */}
       <ParticleBackground />
 
       {/* Main Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:pt-32">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <motion.div
@@ -155,7 +173,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6 backdrop-blur-md"
             >
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
               <span className="text-sm font-medium text-primary">
@@ -167,7 +185,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4"
+              className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-4 tracking-tight whitespace-nowrap"
             >
               Hi, I'm <span className="gradient-text">Shaily Sarker</span>
             </motion.h1>
@@ -176,7 +194,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="text-2xl sm:text-3xl lg:text-4xl font-semibold mb-6 h-12"
+              className="text-2xl sm:text-3xl lg:text-4xl font-semibold mb-6 h-12 text-foreground/90"
             >
               <TypewriterText words={roles} />
             </motion.div>
@@ -185,47 +203,26 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
-              className="text-lg text-muted-foreground mb-6 max-w-xl mx-auto lg:mx-0"
+              className="text-lg text-muted-foreground mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed"
             >
               Passionate full-stack developer with 2+ years of experience
               building scalable web applications. Specializing in React,
-              Node.js, and modern web technologies.
+              Node.js, and modern web architectures.
             </motion.p>
-
-            {/* Tech Badges with Icons and Labels */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.55 }}
-              className="flex flex-wrap gap-3 justify-center lg:justify-start mb-8"
-            >
-              {techBadges.map((tech, index) => (
-                <motion.div
-                  key={tech.name}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-full ${tech.bgColor} ${tech.textColor} border ${tech.borderColor} text-sm font-medium`}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.6 + index * 0.1 }}
-                  whileHover={{ scale: 1.05, y: -2 }}
-                >
-                  <tech.Icon className="w-4 h-4" />
-                  <span>{tech.name}</span>
-                </motion.div>
-              ))}
-            </motion.div>
 
             {/* CTA Buttons */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7 }}
-              className="flex flex-wrap gap-4 justify-center lg:justify-start mb-8"
+              className="flex flex-wrap gap-4 justify-center lg:justify-start mb-10"
             >
               <MovingBorderButton
                 as="a"
                 href="/resume.pdf"
-                download
-                className="gap-2"
+                download="Shaily_Sarker_Resume.pdf"
+                className="gap-2 bg-primary text-primary-foreground hover:bg-primary/90 border-none"
+                borderClassName="bg-[radial-gradient(hsl(var(--accent))_40%,transparent_60%)]"
               >
                 <Download className="w-4 h-4" />
                 Download Resume
@@ -233,50 +230,37 @@ const HeroSection = () => {
               <MovingBorderButton
                 as="a"
                 href="https://drive.google.com/file/d/1RlfkJSrP-AtuI_-EiHmpj56AORwl58RL/view?usp=sharing"
-                download
-                className="gap-2"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="gap-2 bg-secondary/50 border-primary/20 hover:bg-secondary"
               >
                 <Eye className="w-4 h-4" />
                 View Resume
               </MovingBorderButton>
-              {/* <MovingBorderButton as="a" href="#contact" className="gap-2">
-                Get in Touch
-              </MovingBorderButton> */}
-              {/* <Button
-                borderRadius="1.75rem"
-                className="bg-white dark:bg-slate-900 text-black dark:text-white border-neutral-200 dark:border-slate-800"
-              >
-                Borders are cool
-              </Button> */}
             </motion.div>
 
             {/* Social Links */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8 }}
-              className="flex gap-4 justify-center lg:justify-start"
-            >
+            <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
               {socialLinks.map((social, index) => (
                 <motion.a
                   key={social.name}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`p-3 rounded-xl bg-secondary/80 border border-border text-muted-foreground transition-all duration-300 ${social.hoverColor}`}
-                  whileHover={{ scale: 1.1, y: -3 }}
+                  className="p-4 rounded-xl bg-card border border-border hover:border-primary/50 hover:bg-primary/5 transition-all text-muted-foreground hover:text-primary shadow-sm"
+                  whileHover={{ scale: 1.1, y: -5 }}
                   whileTap={{ scale: 0.95 }}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.8 + index * 0.05 }}
                 >
-                  <social.icon className="w-5 h-5" />
+                  <social.icon className="w-6 h-6" />
                 </motion.a>
               ))}
-            </motion.div>
+            </div>
           </motion.div>
 
-          {/* Right Content - Profile Image with Rotating Dotted Circle */}
+          {/* Right Content - Profile Image with Ring and Badge */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -286,62 +270,108 @@ const HeroSection = () => {
             <div className="relative flex items-center justify-center">
               {/* Rotating Dashed Circle */}
               <RotatingDashedCircle
-                size={320}
+                size={340}
                 strokeWidth={2}
-                dashLength={15}
-                gapLength={10}
-                duration={20}
+                dashLength={8}
+                gapLength={8}
+                duration={30}
               />
 
-              {/* Floating Tech Icons with proper icons */}
-              {floatingTechIcons.map((tech, index) => (
-                <motion.div
-                  key={tech.name}
-                  className={`absolute ${tech.position} w-14 h-14 rounded-2xl bg-gradient-to-br ${tech.bgGradient} flex items-center justify-center shadow-lg z-20`}
-                  animate={{
-                    y: tech.animateY ? [0, tech.animateY ? -8 : 0, 0] : 0,
-                    x: tech.animateX ? [0, 5, 0] : 0,
-                  }}
-                  transition={{
-                    duration: 3 + index * 0.5,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: tech.delay,
-                  }}
-                >
-                  <tech.Icon className="w-7 h-7 text-white" />
-                </motion.div>
-              ))}
+              {/* Integrated Experience Badge */}
+              <motion.div
+                className="absolute bottom-4 -right-4 p-4 rounded-2xl bg-card/90 border border-primary/30 shadow-2xl z-30 flex items-center gap-3 backdrop-blur-md"
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 1 }}
+              >
+                <div className="p-2.5 rounded-xl bg-primary text-primary-foreground flex items-center justify-center">
+                  <Briefcase className="w-5 h-5" />
+                </div>
+                <div>
+                  <p className="text-[10px] uppercase font-bold text-muted-foreground tracking-wider">Years of</p>
+                  <p className="text-sm font-bold text-foreground">2+ Experience</p>
+                </div>
+              </motion.div>
+
+              {/* Integrated Projects Badge */}
+              <motion.div
+                className="absolute -top-4 -left-4 p-4 rounded-2xl bg-card/90 border border-accent/30 shadow-2xl z-30 flex items-center gap-3 backdrop-blur-md"
+                initial={{ y: -20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 1.2 }}
+              >
+                <div className="p-2.5 rounded-xl bg-accent text-accent-foreground flex items-center justify-center">
+                  <Rocket className="w-5 h-5" />
+                </div>
+                <div>
+                  <p className="text-[10px] uppercase font-bold text-muted-foreground tracking-wider">Completed</p>
+                  <p className="text-sm font-bold text-foreground">25+ Projects</p>
+                </div>
+              </motion.div>
 
               {/* Profile Image */}
-              <div className="relative w-60 h-60 sm:w-68 sm:h-68 rounded-full overflow-hidden border-4 border-primary/30 shadow-2xl z-10">
-                <div className="w-full h-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
-                  <span className="text-6xl">👨‍💻</span>
+              <div className="relative w-64 h-64 sm:w-72 sm:h-72 rounded-full overflow-hidden border-4 border-primary/20 shadow-2xl z-10 bg-background">
+                <div className="w-full h-full bg-gradient-to-br from-primary/10 via-background to-accent/10 flex items-center justify-center">
+                  <span className="text-7xl group-hover:scale-110 transition-transform duration-500">
+                    👨‍💻
+                  </span>
                 </div>
               </div>
 
-              {/* Soft Glow Effect */}
-              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary/15 to-accent/15 blur-3xl -z-10 scale-125" />
+              {/* Enhanced Soft Glow Effect */}
+              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary/20 to-accent/20 blur-[80px] -z-10 scale-125" />
             </div>
           </motion.div>
         </div>
+
+        {/* Tech Logos with Text Row (The "Outside" Logos) */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1, duration: 1 }}
+          className="mt-24 pt-12 border-t border-border/30"
+        >
+          <p className="text-center text-sm font-medium text-muted-foreground uppercase tracking-[0.2em] mb-8">
+            Specialized Tech Stack
+          </p>
+          <div className="flex flex-wrap justify-center gap-8 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-700">
+            {techBadges.map((tech, index) => (
+              <motion.div
+                key={tech.name}
+                className="flex flex-col items-center gap-3 group"
+                whileHover={{ y: -5, opacity: 1 }}
+              >
+                <div
+                  className={`p-4 rounded-2xl ${tech.bgColor} border ${tech.borderColor} group-hover:border-primary/50 transition-all duration-300`}
+                >
+                  <tech.Icon className="w-8 h-8" />
+                </div>
+                <span className="text-sm font-bold tracking-wider group-hover:text-primary transition-colors">
+                  {tech.name}
+                </span>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
       </div>
 
       {/* Scroll Indicator */}
       <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1 }}
+        className="absolute bottom-6 left-1/2 -translate-x-1/2"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.5 }}
       >
         <motion.a
           href="#about"
-          className="flex flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
+          className="flex flex-col items-center gap-1 text-muted-foreground hover:text-primary transition-colors group"
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
         >
-          <span className="text-sm font-medium">Scroll Down</span>
-          <ChevronDown className="w-5 h-5" />
+          <span className="text-[10px] font-bold uppercase tracking-[0.2em]">
+            Discovery
+          </span>
+          <ChevronDown className="w-4 h-4 group-hover:scale-125 transition-transform" />
         </motion.a>
       </motion.div>
     </section>

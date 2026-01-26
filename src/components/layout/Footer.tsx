@@ -1,24 +1,46 @@
-import { motion } from 'framer-motion';
-import { Github, Linkedin, Twitter, Mail, Heart, ArrowUp } from 'lucide-react';
+import { IconBrandWhatsapp, IconPhone } from "@tabler/icons-react";
+import { motion } from "framer-motion";
+import {
+  Github,
+  Linkedin,
+  Twitter,
+  Mail,
+  Heart,
+  ArrowUp,
+  Phone,
+} from "lucide-react";
 
 const footerLinks = [
-  { name: 'Home', href: '#home' },
-  { name: 'About', href: '#about' },
-  { name: 'Skills', href: '#skills' },
-  { name: 'Projects', href: '#projects' },
-  { name: 'Contact', href: '#contact' },
+  { name: "Home", href: "#home" },
+  { name: "About", href: "#about" },
+  { name: "Skills", href: "#skills" },
+  { name: "Projects", href: "#projects" },
+  { name: "Contact", href: "#contact" },
 ];
 
 const socialLinks = [
-  { icon: Github, href: 'https://github.com', label: 'GitHub' },
-  { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
-  { icon: Twitter, href: 'https://twitter.com', label: 'Twitter' },
-  { icon: Mail, href: 'mailto:your@email.com', label: 'Email' },
+  {
+    icon: IconPhone,
+    href: "tel:+8801730465918",
+    label: "Phone",
+  },
+  { icon: Mail, href: "mailto:shailysarker11@gmail.com", label: "Email" },
+  {
+    icon: IconBrandWhatsapp,
+    href: "https://wa.me/8801730465918",
+    label: "WhatsApp",
+  },
+  {
+    icon: Linkedin,
+    href: "https://www.linkedin.com/in/shaily-sarker-905757387",
+    label: "LinkedIn",
+  },
+  { icon: Github, href: "https://github.com/ShailySarker", label: "GitHub" },
 ];
 
 const Footer = () => {
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -36,10 +58,12 @@ const Footer = () => {
               whileHover={{ scale: 1.05 }}
             >
               <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-lg">D</span>
+                <span className="text-primary-foreground font-bold text-lg">
+                  SS
+                </span>
               </div>
               <span className="font-bold text-xl">
-                Dev<span className="gradient-text">Portfolio</span>
+                Shaily<span className="gradient-text">Sarker</span>
               </span>
             </motion.a>
             <p className="text-muted-foreground text-sm">
@@ -86,9 +110,9 @@ const Footer = () => {
         {/* Bottom */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-muted-foreground text-sm flex items-center gap-1">
-            © {new Date().getFullYear()} Made with{' '}
-            <Heart className="w-4 h-4 text-red-500 fill-red-500" /> by{' '}
-            <span className="gradient-text font-medium">Your Name</span>
+            © {new Date().getFullYear()} Made with{" "}
+            <Heart className="w-4 h-4 text-red-500 fill-red-500" /> by{" "}
+            <span className="gradient-text font-medium">Shaily Sarker</span>
           </p>
 
           {/* Scroll to Top */}

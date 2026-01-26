@@ -1,54 +1,52 @@
-import { motion } from 'framer-motion';
-import AnimatedSection from '@/components/effects/AnimatedSection';
-import GlowCard from '@/components/effects/GlowCard';
-import { GraduationCap, Award, Calendar, MapPin } from 'lucide-react';
+import { motion } from "framer-motion";
+import AnimatedSection from "@/components/effects/AnimatedSection";
+import GlowCard from "@/components/effects/GlowCard";
+import { GraduationCap, Award, Calendar, MapPin } from "lucide-react";
 
 const education = [
   {
     degree: "Bachelor of Science in Computer Science",
-    institution: "University Name",
-    location: "City, Country",
+    institution: "American International University Bangladesh (AIUB)",
+    location: "Dhaka, Bangladesh",
     duration: "2018 - 2022",
-    description: "Focused on software engineering, data structures, algorithms, and web development. Graduated with honors.",
-    achievements: [
-      "Dean's List - All Semesters",
-      "Best Final Year Project Award",
-      "GPA: 3.8/4.0",
-    ],
+    description:
+      "Focused on software engineering, data structures, algorithms, and web development. Graduated with honors.",
+    achievements: ["GPA: 3.91/4.0", "Dean's List", "Scholarship"],
   },
-  {
-    degree: "Higher Secondary Certificate (HSC)",
-    institution: "College Name",
-    location: "City, Country",
-    duration: "2016 - 2018",
-    description: "Science stream with focus on Mathematics, Physics, and Computer Science.",
-    achievements: [
-      "Top 10 in Class",
-      "Science Club President",
-      "District Level Programming Competition Winner",
-    ],
-  },
+  // {
+  //   degree: "Higher Secondary Certificate (HSC)",
+  //   institution: "College Name",
+  //   location: "City, Country",
+  //   duration: "2016 - 2018",
+  //   description:
+  //     "Science stream with focus on Mathematics, Physics, and Computer Science.",
+  //   achievements: [
+  //     "Top 10 in Class",
+  //     "Science Club President",
+  //     "District Level Programming Competition Winner",
+  //   ],
+  // },
 ];
 
 const certifications = [
   {
-    name: "AWS Certified Developer",
-    issuer: "Amazon Web Services",
+    name: "Complete Web Development Course (Level-1)",
+    issuer: "Programming Hero",
     date: "2023",
-    credentialId: "AWS-DEV-2023",
+    credentialId: "WEB7-4963",
   },
   {
-    name: "React Developer Certification",
-    issuer: "Meta",
-    date: "2023",
-    credentialId: "META-REACT-2023",
+    name: "Next Level Web Development (Level-2)",
+    issuer: "Programming Hero",
+    date: "2026",
+    credentialId: "PHL2B5WEB7-49631129",
   },
-  {
-    name: "MongoDB Developer Certification",
-    issuer: "MongoDB University",
-    date: "2022",
-    credentialId: "MONGO-DEV-2022",
-  },
+  // {
+  //   name: "MongoDB Developer Certification",
+  //   issuer: "MongoDB University",
+  //   date: "2022",
+  //   credentialId: "MONGO-DEV-2022",
+  // },
 ];
 
 const EducationSection = () => {
@@ -64,7 +62,8 @@ const EducationSection = () => {
             Academic <span className="gradient-text">Background</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            My educational journey and certifications that have shaped my technical expertise.
+            My educational journey and certifications that have shaped my
+            technical expertise.
           </p>
         </AnimatedSection>
 
@@ -111,8 +110,12 @@ const EducationSection = () => {
                           </span>
                         </div>
                         <h4 className="text-lg font-bold mb-1">{edu.degree}</h4>
-                        <p className="text-primary font-medium mb-3">{edu.institution}</p>
-                        <p className="text-muted-foreground text-sm mb-4">{edu.description}</p>
+                        <p className="text-primary font-medium mb-3">
+                          {edu.institution}
+                        </p>
+                        <p className="text-muted-foreground text-sm mb-4">
+                          {edu.description}
+                        </p>
                         <div className="flex flex-wrap gap-2">
                           {edu.achievements.map((achievement) => (
                             <span
@@ -151,15 +154,19 @@ const EducationSection = () => {
                     <div className="relative">
                       <div className="flex items-start justify-between mb-4">
                         <div>
-                          <h4 className="text-lg font-bold mb-1">{cert.name}</h4>
-                          <p className="text-primary font-medium">{cert.issuer}</p>
+                          <h4 className="text-lg font-bold mb-1">
+                            {cert.name}
+                          </h4>
+                          <p className="text-primary font-medium">
+                            {cert.issuer}
+                          </p>
                         </div>
                         <span className="px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium">
                           {cert.date}
                         </span>
                       </div>
                       <p className="text-sm text-muted-foreground">
-                        Credential ID: {cert.credentialId}
+                        Validation No: {cert.credentialId}
                       </p>
                     </div>
                   </GlowCard>

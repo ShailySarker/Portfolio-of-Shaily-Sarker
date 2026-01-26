@@ -10,71 +10,86 @@ import {
 
 const skillCategories = [
   {
-    title: 'Frontend',
+    title: "Frontend",
     icon: Code2,
-    gradient: 'from-blue-500 to-cyan-500',
-    bgGradient: 'from-blue-500/10 to-cyan-500/10',
+    gradient: "from-blue-500 to-cyan-500",
+    bgGradient: "from-blue-500/10 to-cyan-500/10",
     skills: [
-      { name: 'React.js', level: 95 },
-      { name: 'Next.js', level: 85 },
-      { name: 'TypeScript', level: 90 },
-      { name: 'Tailwind CSS', level: 95 },
-      { name: 'Redux', level: 85 },
-      { name: 'HTML5/CSS3', level: 95 },
+      { name: "React.js", level: 95 },
+      { name: "Next.js", level: 90 },
+      { name: "TypeScript", level: 85 },
+      { name: "Tailwind CSS", level: 95 },
+      { name: "React Router", level: 90 },
+      { name: "ShadCN UI", level: 85 },
     ],
   },
   {
-    title: 'Backend',
+    title: "Backend",
     icon: Server,
-    gradient: 'from-emerald-500 to-teal-500',
-    bgGradient: 'from-emerald-500/10 to-teal-500/10',
+    gradient: "from-emerald-500 to-teal-500",
+    bgGradient: "from-emerald-500/10 to-teal-500/10",
     skills: [
-      { name: 'Node.js', level: 90 },
-      { name: 'Express.js', level: 90 },
-      { name: 'REST APIs', level: 92 },
-      { name: 'GraphQL', level: 75 },
-      { name: 'Python', level: 70 },
-      { name: 'Java', level: 65 },
+      { name: "Node.js", level: 90 },
+      { name: "Express.js", level: 90 },
+      { name: "MongoDB", level: 92 },
+      { name: "Mongoose", level: 90 },
+      { name: "PostgreSQL", level: 80 },
+      { name: "Prisma", level: 85 },
     ],
   },
   {
-    title: 'Database',
-    icon: Database,
-    gradient: 'from-violet-500 to-purple-500',
-    bgGradient: 'from-violet-500/10 to-purple-500/10',
+    title: "Auth, APIs & Payments",
+    icon: Sparkles,
+    gradient: "from-violet-500 to-purple-500",
+    bgGradient: "from-violet-500/10 to-purple-500/10",
     skills: [
-      { name: 'MongoDB', level: 90 },
-      { name: 'PostgreSQL', level: 80 },
-      { name: 'MySQL', level: 75 },
-      { name: 'Redis', level: 70 },
-      { name: 'Firebase', level: 85 },
-      { name: 'Prisma', level: 80 },
+      { name: "JWT & NextAuth", level: 90 },
+      { name: "Passport.js", level: 80 },
+      { name: "Axios & React Hook Form", level: 85 },
+      { name: "Redux Toolkit", level: 85 },
+      { name: "RTK Query", level: 90 },
+      { name: "Stripe / Razorpay / SSL Commerz", level: 80 },
     ],
   },
   {
     title: 'Tools & DevOps',
     icon: Wrench,
-    gradient: 'from-orange-500 to-amber-500',
-    bgGradient: 'from-orange-500/10 to-amber-500/10',
+    gradient: "from-orange-500 to-amber-500",
+    bgGradient: "from-orange-500/10 to-amber-500/10",
     skills: [
-      { name: 'Git & GitHub', level: 95 },
-      { name: 'Docker', level: 75 },
-      { name: 'AWS', level: 70 },
-      { name: 'Vercel', level: 90 },
-      { name: 'VS Code', level: 95 },
-      { name: 'Figma', level: 80 },
+      { name: "Git & GitHub", level: 90 },
+      { name: "Figma", level: 85 },
+      { name: "Postman", level: 90 },
+      { name: "Netlify / Vercel / Render", level: 95 },
+      { name: "Cloudinary", level: 90 },
+      { name: "Firebase", level: 75 },
     ],
   },
 ];
 
 const otherTechnologies = [
-  'Jest', 'Cypress', 'Webpack', 'Vite', 'Sass', 'Bootstrap', 
-  'Material UI', 'Framer Motion', 'Socket.io', 'JWT', 'OAuth', 'Linux'
+  "JavaScript",
+  "TypeScript",
+  "Vite",
+  "Bootstrap",
+  "Daisy UI",
+  "Hyper UI",
+  "Material UI",
+  "Aceternity UI",
+  "Framer Motion",
+  "Context API",
+  "Redis",
+  "VS Code",
+  "Chrome DevTools",
+  "Redux DevTools",
 ];
 
 const SkillsSection = () => {
   return (
-    <section id="skills" className="relative py-20 lg:py-32 overflow-hidden bg-secondary/30">
+    <section
+      id="skills"
+      className="relative py-20 lg:py-32 overflow-hidden bg-secondary/30"
+    >
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-dots opacity-30" />
       
@@ -88,7 +103,8 @@ const SkillsSection = () => {
             My <span className="gradient-text">Tech Stack</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            A comprehensive overview of my technical expertise and the technologies I work with daily.
+            A comprehensive overview of my technical expertise and the
+            technologies I work with daily.
           </p>
         </AnimatedSection>
 
@@ -106,11 +122,15 @@ const SkillsSection = () => {
                 transition={{ duration: 0.3 }}
               >
                 {/* Card Background with gradient border effect */}
-                <div className={`absolute -inset-0.5 bg-gradient-to-r ${category.gradient} rounded-3xl opacity-0 group-hover:opacity-100 blur transition-opacity duration-500`} />
+                <div
+                  className={`absolute -inset-0.5 bg-gradient-to-r ${category.gradient} rounded-3xl opacity-0 group-hover:opacity-100 blur transition-opacity duration-500`}
+                />
                 
                 <div className="relative h-full bg-card border border-border rounded-3xl p-6 lg:p-8 overflow-hidden">
                   {/* Gradient overlay */}
-                  <div className={`absolute top-0 right-0 w-40 h-40 bg-gradient-to-br ${category.bgGradient} rounded-full blur-3xl opacity-50 -translate-y-1/2 translate-x-1/2`} />
+                  <div
+                    className={`absolute top-0 right-0 w-40 h-40 bg-gradient-to-br ${category.bgGradient} rounded-full blur-3xl opacity-50 -translate-y-1/2 translate-x-1/2`}
+                  />
                   
                   {/* Header */}
                   <div className="relative flex items-center gap-4 mb-8">
@@ -135,7 +155,9 @@ const SkillsSection = () => {
                         key={skill.name}
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ delay: categoryIndex * 0.1 + skillIndex * 0.05 }}
+                        transition={{
+                          delay: categoryIndex * 0.1 + skillIndex * 0.05,
+                        }}
                         viewport={{ once: true }}
                         className="group/skill"
                       >
@@ -149,7 +171,9 @@ const SkillsSection = () => {
                         </div>
                         <div className="relative h-2.5 bg-secondary rounded-full overflow-hidden">
                           {/* Background glow on hover */}
-                          <div className={`absolute inset-0 bg-gradient-to-r ${category.gradient} opacity-0 group-hover/skill:opacity-20 transition-opacity blur-sm`} />
+                          <div
+                            className={`absolute inset-0 bg-gradient-to-r ${category.gradient} opacity-0 group-hover/skill:opacity-20 transition-opacity blur-sm`}
+                          />
                           
                           <motion.div
                             className={`absolute inset-y-0 left-0 bg-gradient-to-r ${category.gradient} rounded-full`}
@@ -158,7 +182,7 @@ const SkillsSection = () => {
                             transition={{ 
                               duration: 1.2, 
                               delay: categoryIndex * 0.1 + skillIndex * 0.08,
-                              ease: [0.25, 0.46, 0.45, 0.94]
+                              ease: [0.25, 0.46, 0.45, 0.94],
                             }}
                             viewport={{ once: true }}
                           />
@@ -166,12 +190,13 @@ const SkillsSection = () => {
                           {/* Shimmer effect */}
                           <motion.div
                             className="absolute inset-y-0 w-20 bg-gradient-to-r from-transparent via-white/30 to-transparent"
-                            initial={{ left: '-20%' }}
-                            whileInView={{ left: '120%' }}
+                            initial={{ left: "-20%" }}
+                            whileInView={{ left: "120%" }}
                             transition={{ 
                               duration: 1.5, 
-                              delay: categoryIndex * 0.1 + skillIndex * 0.08 + 0.5,
-                              ease: 'easeInOut'
+                              delay:
+                                categoryIndex * 0.1 + skillIndex * 0.08 + 0.5,
+                              ease: "easeInOut",
                             }}
                             viewport={{ once: true }}
                           />

@@ -23,7 +23,4 @@ dist-ssr
 *.sln
 *.sw?
 
-git commit -m "first commit"
-git branch -M main
-git remote add origin https://github.com/ShailySarker/Portfolio-of-Shaily-Sarker.git
-git push -u origin main
+.env

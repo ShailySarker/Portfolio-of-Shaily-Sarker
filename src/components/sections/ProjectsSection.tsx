@@ -1,140 +1,260 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import AnimatedSection from '@/components/effects/AnimatedSection';
-import MovingBorderButton from '@/components/effects/MovingBorderButton';
-import { ExternalLink, Github, X, ChevronRight, Layers, ArrowRight } from 'lucide-react';
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import AnimatedSection from "@/components/effects/AnimatedSection";
+import MovingBorderButton from "@/components/effects/MovingBorderButton";
+import {
+  ExternalLink,
+  Github,
+  X,
+  ChevronRight,
+  Layers,
+  ArrowRight,
+} from "lucide-react";
+import joinMyTrip from "../../assets/images/join-my-trip.png";
+import digiWallet from "../../assets/images/digi-wallet.png";
+import stylishFashion from "../../assets/images/stylish-faction.png";
+import prepeat from "../../assets/images/prepeat.png";
+import taxax from "../../assets/images/texax.png";
+import softinvo from "../../assets/images/softinvo.png";
+import { Link } from "react-router-dom";
 
 const projects = [
   {
     id: 1,
-    title: "E-Commerce Platform",
-    shortDescription: "A full-featured e-commerce solution with real-time inventory management.",
-    fullDescription: "Built a comprehensive e-commerce platform that handles everything from product listings to payment processing. Features include user authentication, shopping cart, wishlist, order tracking, and admin dashboard.",
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=1200&fit=crop",
-    technologies: ["React", "Node.js", "MongoDB", "Stripe", "Redux", "Socket.io"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com",
+    title: "Join My Trip",
+    shortDescription:
+      "A travel platform that helps users find companions, plan trips, and connect with people going to similar destinations.",
+    fullDescription:
+      "Join My Trip is a full-stack web application designed to connect travelers based on destination, interests, and schedules. Users can create trips, explore others’ travel plans, send join requests, and chat before traveling. The platform focuses on building a social travel experience with secure authentication, dynamic dashboards, and responsive design. It also includes profile management, filtering, and real-time interaction features to improve engagement.",
+    image: joinMyTrip,
+    technologies: [
+      "Next.js",
+      "TypeScript",
+      "Redis",
+      "Tailwind CSS",
+      "Shadcn UI",
+      "Zod",
+      "JWT",
+      "Cron Jobs",
+      "Node.js",
+      "Express.js",
+      "Redis",
+      "Cloudinary",
+      "Multer",
+      "Passport.js",
+      "Mongoose",
+      "MongoDB",
+      "Stripe",
+    ],
+    liveUrl: "https://join-my-trip-client-side.vercel.app",
+    githubUrl: "https://github.com/ShailySarker/Join-My-Trip-Client-Side",
     challenges: [
-      "Implemented real-time inventory updates across multiple concurrent users",
-      "Designed a scalable database schema for millions of products",
-      "Integrated multiple payment gateways with fallback mechanisms",
+      "Managing multiple user based secure authentication",
+      "Designing a scalable APIs and database schema for travelers and trips",
+      "Handling complex filtering logic for trips,travelers, booking, reviews, and comments",
+      "Integrating payment gateways with fallback mechanisms",
     ],
     improvements: [
-      "Add AI-powered product recommendations",
-      "Implement progressive web app (PWA) features",
-      "Add multi-vendor marketplace support",
+      "Add AI-powered AI-based travel and travel buddy matching",
+      "Implement real-time chat using WebSockets",
+      "Add real-time notification system",
     ],
     category: "Full Stack",
   },
   {
     id: 2,
-    title: "Project Management Tool",
-    shortDescription: "Collaborative project management with real-time updates and analytics.",
-    fullDescription: "Developed a comprehensive project management solution inspired by tools like Jira and Trello. Features drag-and-drop task boards, time tracking, team collaboration, and detailed analytics dashboards.",
-    image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&h=1200&fit=crop",
-    technologies: ["Next.js", "TypeScript", "PostgreSQL", "Prisma", "Socket.io"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com",
+    title: "Digi Wallet",
+    shortDescription:
+      "A digital wallet system for managing balance, transactions, and secure payments.",
+    fullDescription:
+      "Digi Wallet is a secure financial web application that allows users to create accounts, add funds, transfer money, and view transaction history. The platform focuses on security, performance, and accurate data handling. It includes authentication, wallet balance tracking, transaction logs, and role-based access for users and admins.",
+    image: digiWallet,
+    technologies: [
+      "React",
+      "React Router",
+      "Tailwind CSS",
+      "Shadcn UI",
+      "TypeScript",
+      "React Hook Form",
+      "Axios",
+      "Zod",
+      "Redux",
+      "RTK Query",
+      "Node.js",
+      "Express.js",
+      "JWT",
+      "Passport.js",
+      "Cloudinary",
+      "Multer",
+      "Redis",
+      "Mongoose",
+      "MongoDB",
+    ],
+    liveUrl: "https://digital-wallet-system-frontend-side.vercel.app/",
+    githubUrl:
+      "https://github.com/ShailySarker/Digital-Wallet-System-Frontend-Side",
     challenges: [
-      "Built real-time synchronization for collaborative editing",
-      "Implemented complex permission systems for team hierarchies",
-      "Created performant drag-and-drop with optimistic updates",
+      "Handling sensitive data securely",
+      "Maintaining transaction consistency",
+      "Preventing duplicate or invalid transactions",
     ],
     improvements: [
-      "Add Gantt chart visualization",
-      "Implement AI-powered task estimation",
-      "Add integration with popular third-party tools",
+      "Add subscription plans and billing system",
+      "Implement real-time notification system",
+      "Add reviews and ratings for agents",
     ],
     category: "Full Stack",
   },
   {
     id: 3,
-    title: "Social Media Dashboard",
-    shortDescription: "Analytics dashboard for managing multiple social media accounts.",
-    fullDescription: "Created a unified dashboard for social media managers to track performance across platforms. Features include scheduled posting, engagement analytics, audience insights, and automated reporting.",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=1200&fit=crop",
-    technologies: ["React", "Express.js", "Redis", "Chart.js", "OAuth2.0"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com",
+    title: "Stylish Fashion",
+    shortDescription:
+      "A modern e-commerce fashion platform with product browsing, cart, and secure checkout.",
+    fullDescription:
+      "Stylish Fashion is a responsive fashion e-commerce application where users can browse products, filter collections, manage carts, and place orders. It includes authentication, wishlist, order tracking, and an admin dashboard for managing products and inventory. The focus was on UI/UX, performance, and smooth shopping flow.",
+    image: stylishFashion,
+    technologies: [
+      "React",
+      "React Router",
+      "Tailwind CSS",
+      "JavaScript",
+      "Axios",
+      "JOI",
+      "Redux",
+      "Redux Toolkit",
+      "Node.js",
+      "Express.js",
+      "JWT",
+      "Firebase",
+      "Multer",
+      "Stripe",
+      "Mongoose",
+      "MongoDB",
+    ],
+    liveUrl: "https://stylish-fashion-client-side.vercel.app",
+    githubUrl: "https://github.com/ShailySarker/Stylish-Fashion-Client-Side",
     challenges: [
-      "Handled rate limiting across multiple API integrations",
-      "Built efficient caching strategies for analytics data",
-      "Implemented secure OAuth flows for multiple platforms",
+      "Handled multiple user based secure authentication system",
+      "Built efficient filtering and sorting for finding products",
+      "Built efficient filtering and sorting for finding products",
     ],
     improvements: [
-      "Add AI-powered content suggestions",
-      "Implement competitor analysis features",
-      "Add more platform integrations",
+      "Add AI-powered product suggestions",
+      "Implement real-time notification system",
+      "Add reviews and ratings for websites",
     ],
-    category: "Frontend",
+    category: "Full Stack",
   },
   {
     id: 4,
-    title: "Real-time Chat Application",
-    shortDescription: "Scalable messaging platform with end-to-end encryption.",
-    fullDescription: "Built a modern chat application supporting one-on-one and group conversations. Features include message encryption, file sharing, voice messages, and real-time presence indicators.",
-    image: "https://images.unsplash.com/photo-1611606063065-ee7946f0787a?w=800&h=1200&fit=crop",
-    technologies: ["React", "Socket.io", "Node.js", "MongoDB", "WebRTC"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com",
+    title: "PrepEat",
+    shortDescription:
+      "A food service platform offering tiffin services and chef booking.",
+    fullDescription:
+      "PrepEat connects users with home-style meal services and professional chefs. Users can browse menus, book services, schedule deliveries, and manage subscriptions. The platform includes user dashboards, service provider profiles, and order management. It was built with a strong focus on usability and mobile responsiveness.",
+    image: prepeat,
+    technologies: [
+      "React",
+      "React Router",
+      "Tailwind CSS",
+      "DaisyUI",
+      "JavaScript",
+      "Axios",
+      "JOI",
+      "Redux",
+      "RTK Query",
+      "Node.js",
+      "Express.js",
+      "JWT",
+      "Cloudinary",
+      "Passport.js",
+      "Razorpay",
+      "Mongoose",
+      "MongoDB",
+    ],
+    liveUrl: "https://prepeat.in/",
     challenges: [
-      "Implemented end-to-end encryption for secure messaging",
-      "Built scalable WebSocket infrastructure",
-      "Optimized for low-latency message delivery",
+      "Managing booking logic of each particular tiffin service",
+      "Building scalable website infrastructure",
+      "Implementing secure payment gateways",
     ],
     improvements: [
-      "Add video calling features",
-      "Implement message translation",
-      "Add AI chatbot integration",
+      "Add real-time notification features",
+      "Implement live order tracking",
+      "Add AI-powered chef recommendations",
+      "Implement laundry service and homemaker service",
     ],
     category: "Full Stack",
   },
   {
     id: 5,
-    title: "Fitness Tracking App",
-    shortDescription: "Comprehensive fitness app with workout plans and progress tracking.",
-    fullDescription: "Developed a fitness application that helps users track workouts, nutrition, and progress. Features include custom workout plans, exercise library, progress charts, and social features.",
-    image: "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=800&h=1200&fit=crop",
-    technologies: ["React Native", "Firebase", "Redux", "Node.js", "MongoDB"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com",
+    title: "Global Textile Axis",
+    shortDescription:
+      "A professional product-based company website for showcasing textile products and business services.",
+    fullDescription:
+      "GlobalTextileAxis is a corporate website developed to present products, company services, and global business presence. It includes product catalogs, inquiry forms, admin-managed content, and SEO-optimized pages. The goal was to build a fast, professional, and scalable web presence.",
+    image: taxax,
+    technologies: [
+      "React",
+      "React Router",
+      "Tailwind CSS",
+      "Shadcn UI",
+      "TypeScript",
+      "Axios",
+      "JOI",
+      "Redux",
+      "Redux Toolkit",
+      "Node.js",
+      "Express.js",
+      "JWT",
+      "Cloudfile",
+      "Razorpay",
+      "Mongoose",
+      "MongoDB",
+    ],
+    liveUrl: "https://texax.in",
     challenges: [
-      "Created intuitive UI for workout tracking during exercise",
-      "Implemented offline-first architecture",
-      "Built complex progress visualization charts",
+      "Implementing most complex seller based product adding catalog",
+      "Building variations based product catalog",
+      "Visualizing dynamic product management",
     ],
     improvements: [
-      "Add AI-powered workout recommendations",
-      "Integrate with wearable devices",
-      "Add social challenges and leaderboards",
+      "Add AI-powered product recommendations",
+      "Integrate real-time chat using WebSockets",
+      "Integrate real-time notification system",
     ],
-    category: "Mobile",
+    category: "Full Stack",
   },
   {
     id: 6,
-    title: "AI Content Generator",
-    shortDescription: "AI-powered tool for generating marketing content and copy.",
-    fullDescription: "Created an AI-powered content generation platform that helps marketers create blog posts, social media content, and ad copy. Features include template library, tone adjustment, and multi-language support.",
-    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=1200&fit=crop",
-    technologies: ["Next.js", "OpenAI API", "Prisma", "PostgreSQL", "Stripe"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com",
+    title: "SoftInvo",
+    shortDescription:
+      "A business and invoicing platform for managing clients, services, and invoices.",
+    fullDescription:
+      "SoftInvo is a SaaS-style application for generating invoices, managing clients, tracking payments, and monitoring business operations. It includes authentication, role-based dashboards, invoice generation, and report management. Built to help small businesses automate billing workflows.",
+    image: softinvo,
+    technologies: ["React", "React Router", "Tailwind CSS", "JavaScript"],
+    liveUrl: "https://www.softinvo.in",
     challenges: [
-      "Fine-tuned AI prompts for consistent quality output",
+      "Fine-tuned ui design for better user experience",
       "Implemented usage-based billing system",
       "Built content moderation system",
     ],
     improvements: [
-      "Add image generation capabilities",
-      "Implement team collaboration features",
-      "Add content scheduling and publishing",
+      "Implement user based authentication system with JWT",
+      "Build AI-powered chat system",
+      "Add real-time notification system",
+      "Implement usage-based billing system",
+      "Build AI powered service recommendation system",
     ],
-    category: "AI/ML",
+    category: "Frontend",
   },
 ];
 
 const ProjectsSection = () => {
-  const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
+  const [selectedProject, setSelectedProject] = useState<
+    (typeof projects)[0] | null
+  >(null);
   const [showAll, setShowAll] = useState(false);
 
   const displayedProjects = showAll ? projects : projects.slice(0, 3);
@@ -151,15 +271,13 @@ const ProjectsSection = () => {
             Featured <span className="gradient-text">Projects</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            A selection of projects that showcase my skills and passion for building great software.
+            A selection of projects that showcase my skills and passion for
+            building great software.
           </p>
         </AnimatedSection>
 
         {/* Projects Grid */}
-        <motion.div 
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-          layout
-        >
+        <motion.div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8" layout>
           <AnimatePresence mode="popLayout">
             {displayedProjects.map((project, index) => (
               <motion.div
@@ -178,32 +296,55 @@ const ProjectsSection = () => {
                   >
                     {/* Gradient border on hover */}
                     <div className="absolute -inset-0.5 bg-gradient-to-r from-primary to-accent rounded-3xl opacity-0 group-hover:opacity-100 blur transition-opacity duration-300" />
-                    
+
                     <div className="relative bg-card border border-border rounded-3xl overflow-hidden h-full flex flex-col">
                       {/* Project Image with scroll effect */}
-                      <div className="relative h-48 overflow-hidden">
+                      <div className="relative h-48 overflow-hidden group-hover:cursor-pointer">
                         <motion.div
-                          className="absolute inset-0 w-full"
-                          style={{ height: '300%' }}
-                          whileHover={{ y: '-66.67%' }}
-                          transition={{ duration: 3, ease: 'easeInOut' }}
+                          className="absolute top-0 left-0 w-full"
+                          initial={{ y: 0 }}
+                          whileHover={{ y: "calc(-100% + 192px)" }}
+                          transition={{
+                            duration: 5,
+                            ease: "easeInOut",
+                          }}
+                          style={{
+                            height: "auto",
+                            minHeight: "100%",
+                          }}
                         >
-                          <img 
-                            src={project.image} 
+                          <img
+                            src={project.image}
                             alt={project.title}
-                            className="w-full h-full object-cover"
+                            className="w-full object-cover"
                           />
                         </motion.div>
-                        
+
                         {/* Category badge overlay */}
-                        <div className="absolute top-4 left-4 z-10">
+                        <div className="absolute top-[150px] left-4 z-10">
                           <span className="px-3 py-1 rounded-full bg-background/90 backdrop-blur-sm text-xs font-medium border border-border">
                             {project.category}
                           </span>
                         </div>
-                        
+                        <Link to={project.liveUrl} target="_blank">
+                          <div className="absolute top-4 right-4 z-20">
+                            <span className="flex items-center justify-center w-8 h-8 rounded-full bg-background/80 backdrop-blur-md border border-border shadow-md">
+                              <ExternalLink className="w-4 h-4" />
+                            </span>
+                          </div>
+                        </Link>
+                        {project.githubUrl && (
+                          <Link to={project.githubUrl} target="_blank">
+                            <div className="absolute top-4 right-[52px] z-20">
+                              <span className="flex items-center justify-center w-8 h-8 rounded-full bg-background/80 backdrop-blur-md border border-border shadow-md">
+                                <Github className="w-4 h-4" />
+                              </span>
+                            </div>
+                          </Link>
+                        )}
+
                         {/* Gradient overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent opacity-60" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent opacity-60 pointer-events-none" />
                       </div>
 
                       {/* Content */}
@@ -251,13 +392,16 @@ const ProjectsSection = () => {
         </motion.div>
 
         {/* View All Projects Button */}
-        <AnimatedSection className="text-center mt-12" delay={0.4}>
-          <MovingBorderButton 
+        <AnimatedSection
+          className="flex justify-center text-center mt-12"
+          delay={0.4}
+        >
+          <MovingBorderButton
             onClick={() => setShowAll(!showAll)}
             className="gap-2"
           >
             <Layers className="w-4 h-4" />
-            {showAll ? 'Show Less' : 'View All Projects'}
+            {showAll ? "Show Less" : "View All Projects"}
             <motion.span
               animate={{ rotate: showAll ? 180 : 0 }}
               transition={{ duration: 0.3 }}
@@ -297,8 +441,8 @@ const ProjectsSection = () => {
 
               {/* Project Image */}
               <div className="relative h-64 overflow-hidden rounded-t-3xl">
-                <img 
-                  src={selectedProject.image} 
+                <img
+                  src={selectedProject.image}
                   alt={selectedProject.title}
                   className="w-full h-full object-cover"
                 />
@@ -312,19 +456,27 @@ const ProjectsSection = () => {
                     <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-2">
                       {selectedProject.category}
                     </span>
-                    <h3 className="text-2xl font-bold">{selectedProject.title}</h3>
+                    <h3 className="text-2xl font-bold">
+                      {selectedProject.title}
+                    </h3>
                   </div>
                 </div>
 
                 {/* Description */}
                 <div className="mb-6">
-                  <h4 className="text-lg font-semibold mb-2">About the Project</h4>
-                  <p className="text-muted-foreground">{selectedProject.fullDescription}</p>
+                  <h4 className="text-lg font-semibold mb-2">
+                    About the Project
+                  </h4>
+                  <p className="text-muted-foreground">
+                    {selectedProject.fullDescription}
+                  </p>
                 </div>
 
                 {/* Technologies */}
                 <div className="mb-6">
-                  <h4 className="text-lg font-semibold mb-3">Technologies Used</h4>
+                  <h4 className="text-lg font-semibold mb-3">
+                    Technologies Used
+                  </h4>
                   <div className="flex flex-wrap gap-2">
                     {selectedProject.technologies.map((tech) => (
                       <span
@@ -339,10 +491,15 @@ const ProjectsSection = () => {
 
                 {/* Challenges */}
                 <div className="mb-6">
-                  <h4 className="text-lg font-semibold mb-3">Challenges & Solutions</h4>
+                  <h4 className="text-lg font-semibold mb-3">
+                    Challenges & Solutions
+                  </h4>
                   <ul className="space-y-2">
                     {selectedProject.challenges.map((challenge, i) => (
-                      <li key={i} className="flex items-start gap-2 text-muted-foreground">
+                      <li
+                        key={i}
+                        className="flex items-start gap-2 text-muted-foreground"
+                      >
                         <span className="w-2 h-2 rounded-full bg-primary mt-2 shrink-0" />
                         {challenge}
                       </li>
@@ -352,10 +509,15 @@ const ProjectsSection = () => {
 
                 {/* Future Improvements */}
                 <div className="mb-8">
-                  <h4 className="text-lg font-semibold mb-3">Future Improvements</h4>
+                  <h4 className="text-lg font-semibold mb-3">
+                    Future Improvements
+                  </h4>
                   <ul className="space-y-2">
                     {selectedProject.improvements.map((improvement, i) => (
-                      <li key={i} className="flex items-start gap-2 text-muted-foreground">
+                      <li
+                        key={i}
+                        className="flex items-start gap-2 text-muted-foreground"
+                      >
                         <span className="w-2 h-2 rounded-full bg-accent mt-2 shrink-0" />
                         {improvement}
                       </li>
@@ -374,15 +536,17 @@ const ProjectsSection = () => {
                     <ExternalLink className="w-4 h-4" />
                     Live Demo
                   </MovingBorderButton>
-                  <MovingBorderButton
-                    as="a"
-                    href={selectedProject.githubUrl}
-                    containerClassName="flex-1"
-                    className="w-full justify-center gap-2"
-                  >
-                    <Github className="w-4 h-4" />
-                    View Code
-                  </MovingBorderButton>
+                  {selectedProject.githubUrl && (
+                    <MovingBorderButton
+                      as="a"
+                      href={selectedProject.githubUrl}
+                      containerClassName="flex-1"
+                      className="w-full justify-center gap-2"
+                    >
+                      <Github className="w-4 h-4" />
+                      View Code
+                    </MovingBorderButton>
+                  )}
                 </div>
               </div>
             </motion.div>

@@ -4,39 +4,63 @@ import MovingBorderButton from '@/components/effects/MovingBorderButton';
 import { 
   Globe, 
   Server, 
+  ShieldCheck, 
+  Layout, 
   Zap, 
+  Search,
   ArrowRight
 } from 'lucide-react';
 
 const services = [
   {
     icon: Globe,
-    title: 'Web Development',
-    description: 'Building responsive, high-performance web applications using modern technologies like React, Next.js, and TypeScript.',
-    features: ['Custom Web Apps', 'E-commerce Solutions', 'Progressive Web Apps', 'CMS Integration'],
-    gradient: 'from-sky-500 to-cyan-500',
+    title: 'Full-stack Web Development',
+    description: 'Complete web application development from frontend to backend, delivering production-ready solutions.',
+    features: ['Production Ready', 'Scalable Architecture', 'Full Lifecycle', 'End-to-end Solutions'],
+    gradient: 'from-sky-500 to-indigo-500',
+  },
+  {
+    icon: Layout,
+    title: 'Frontend Engineering',
+    description: 'Building responsive, performant interfaces with React & Next.js, focused on user experience.',
+    features: ['React & Next.js', 'Responsive Design', 'Ultra Performance', 'Framer Motion'],
+    gradient: 'from-indigo-500 to-purple-500',
   },
   {
     icon: Server,
-    title: 'Backend Development',
-    description: 'Creating robust, scalable server-side solutions with Node.js, Express, and various database technologies.',
-    features: ['RESTful APIs', 'GraphQL APIs', 'Database Design', 'Cloud Deployment'],
+    title: 'REST API & Backend',
+    description: 'Designing scalable REST APIs and robust backend architecture with Node.js and Express.',
+    features: ['Node.js & Express', 'Microservices', 'Database Design', 'API Security'],
     gradient: 'from-emerald-500 to-teal-500',
   },
   {
+    icon: ShieldCheck,
+    title: 'Auth & Security',
+    description: 'Implementing secure authentication systems with role-based access control and JWT.',
+    features: ['JWT Auth', 'RBAC Systems', 'Data Encryption', 'Secure Middleware'],
+    gradient: 'from-orange-500 to-red-500',
+  },
+  {
     icon: Zap,
-    title: 'Performance Optimization',
-    description: 'Analyzing and optimizing application performance for faster load times and better user experience.',
-    features: ['Speed Optimization', 'SEO Enhancement', 'Code Splitting', 'Caching Strategies'],
+    title: 'UI Implementation',
+    description: 'Converting Figma designs to pixel-perfect, responsive code with modern CSS frameworks.',
+    features: ['Pixel Perfect', 'Figma to Code', 'Tailwind CSS', 'Interactive UI'],
+    gradient: 'from-blue-500 to-cyan-500',
+  },
+  {
+    icon: Search,
+    title: 'Performance & SEO',
+    description: 'Optimizing web applications for speed, accessibility, and search engine visibility.',
+    features: ['Speed Optimization', 'SEO Best Practices', 'Accessibility', 'Lighthouse 100'],
     gradient: 'from-teal-500 to-green-500',
   },
 ];
 
 const ServicesSection = () => {
   return (
-    <section id="services" className="relative py-20 lg:py-32 overflow-hidden">
+    <section id="services" className="relative py-20 lg:py-32 overflow-hidden bg-secondary/10">
       {/* Background */}
-      <div className="absolute inset-0 bg-grid opacity-20" />
+      <div className="absolute inset-0 bg-grid opacity-[0.05] dark:opacity-[0.1]" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
@@ -101,15 +125,16 @@ const ServicesSection = () => {
                     ))}
                   </ul>
 
-                  {/* Learn More Link */}
-                  <motion.a
+                  {/* Card Button - Different color (Accent) */}
+                  
+                  <MovingBorderButton
+                                  as="a"
                     href="#contact"
-                    className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:gap-3 transition-all"
-                    whileHover={{ x: 5 }}
-                  >
-                    Learn More
-                    <ArrowRight className="w-4 h-4" />
-                  </motion.a>
+                                  className="gap-2 text-xs bg-secondary/50 border-primary/20 hover:bg-secondary"
+                                >
+                                  Discuss Project
+                    <ArrowRight className="ml-2 w-3 h-3" />
+                   </MovingBorderButton>
                 </div>
               </motion.div>
             </AnimatedSection>
@@ -117,18 +142,18 @@ const ServicesSection = () => {
         </div>
 
         {/* CTA */}
-        <AnimatedSection className="text-center mt-16" delay={0.6}>
-          <p className="text-muted-foreground mb-6">
+        <AnimatedSection className="flex flex-col items-center justify-center text-center mt-16" delay={0.6}>
+          <p className="text-muted-foreground mb-8">
             Have a project in mind? Let's discuss how I can help bring your vision to life.
           </p>
           <MovingBorderButton
-            as="a"
-            href="#contact"
-            className="gap-2"
-          >
-            Start a Project
-            <ArrowRight className="w-4 h-4" />
-          </MovingBorderButton>
+                                  as="a"
+                    href="#contact"
+                                  className="gap-2 bg-secondary/50 border-primary/20 hover:bg-secondary"
+                                >
+                                              Start a Project
+                    <ArrowRight className="ml-2 w-3 h-3" />
+                   </MovingBorderButton>          
         </AnimatedSection>
       </div>
     </section>
