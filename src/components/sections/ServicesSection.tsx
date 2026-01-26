@@ -125,35 +125,47 @@ const ServicesSection = () => {
                     ))}
                   </ul>
 
-                  {/* Card Button - Different color (Accent) */}
-                  
-                  <MovingBorderButton
-                                  as="a"
-                    href="#contact"
-                                  className="gap-2 text-xs bg-secondary/50 border-primary/20 hover:bg-secondary"
-                                >
-                                  Discuss Project
-                    <ArrowRight className="ml-2 w-3 h-3" />
-                   </MovingBorderButton>
+                  {/* Card Button - Professional Indigo/Violet */}
+                  <div className="mt-auto">
+                    <MovingBorderButton
+                      as="a"
+                      href="#contact"
+                      className="h-10 text-xs px-6 bg-indigo-600 text-white border-none hover:bg-indigo-700 transition-all font-semibold"
+                      borderGlowColor="hsl(var(--primary))"
+                      borderRadius="0.75rem"
+                    >
+                      Discuss Project
+                      <ArrowRight className="ml-2 w-3 h-3" />
+                    </MovingBorderButton>
+                  </div>
                 </div>
               </motion.div>
             </AnimatedSection>
           ))}
         </div>
 
-        {/* CTA */}
-        <AnimatedSection className="flex flex-col items-center justify-center text-center mt-16" delay={0.6}>
-          <p className="text-muted-foreground mb-8">
-            Have a project in mind? Let's discuss how I can help bring your vision to life.
+        {/* CTA Section */}
+        <AnimatedSection 
+          className="flex flex-col items-center justify-center text-center mt-24 py-12 px-6 rounded-3xl bg-primary/5 border border-primary/10 relative overflow-hidden" 
+          delay={0.6}
+        >
+          {/* Background Highlight */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/5 blur-[100px] -z-10" />
+          
+          <h3 className="text-2xl sm:text-3xl font-bold mb-4">Ready to build something extraordinary?</h3>
+          <p className="text-muted-foreground text-lg mb-10 max-w-xl">
+            Let's collaborate to bring your vision to life with modern technologies and a focus on exceptional user experience.
           </p>
+          
           <MovingBorderButton
-                                  as="a"
-                    href="#contact"
-                                  className="gap-2 bg-secondary/50 border-primary/20 hover:bg-secondary"
-                                >
-                                              Start a Project
-                    <ArrowRight className="ml-2 w-3 h-3" />
-                   </MovingBorderButton>          
+            as="a"
+            href="#contact"
+            className="gap-3 bg-primary text-primary-foreground hover:opacity-90 border-none px-12 h-14 text-base shadow-xl shadow-primary/20 transition-all active:scale-95"
+            borderGlowColor="hsl(var(--accent))"
+          >
+            <span className="font-bold">Start a Project</span>
+            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+          </MovingBorderButton>
         </AnimatedSection>
       </div>
     </section>

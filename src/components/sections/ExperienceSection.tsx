@@ -179,7 +179,7 @@ const ExperienceSection = () => {
 
                   {/* Card */}
                   <div
-                    className={`ml-16 md:ml-20 lg:w-[calc(52%-40px)] ${index % 2 === 0 ? "lg:mr-auto lg:pr-8" : "lg:ml-auto lg:pl-8"}`}
+                    className={`ml-16 md:ml-20 lg:ml-0 lg:w-[calc(52%-40px)] ${index % 2 === 0 ? "lg:mr-auto lg:pr-8" : "lg:ml-auto lg:pl-8"}`}
                   >
                     <motion.div
                       className="relative group"

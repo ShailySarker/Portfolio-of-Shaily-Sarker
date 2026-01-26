@@ -131,8 +131,12 @@ const MovingBorderButton = ({
 
       <div
         className={cn(
-          "relative bg-card border border-border backdrop-blur-xl text-foreground flex items-center justify-center w-full h-full text-sm font-bold antialiased px-10 transition-all duration-300 group-hover/btn:bg-primary/5 group-hover/btn:border-primary/20",
-          className
+          // "relative bg-card border border-border backdrop-blur-xl text-foreground flex items-center justify-center w-full h-full text-sm font-bold antialiased px-10 transition-all duration-300 group-hover/btn:bg-primary/5 group-hover/btn:border-primary/20",
+          // className
+          "relative border border-border backdrop-blur-xl text-foreground flex items-center justify-center w-full h-full text-sm font-bold antialiased px-10 transition-all duration-300",
+          // Fallback to bg-card if no background class is provided in className
+          !className?.includes("bg-") && "bg-card hover:bg-primary/5",
+          
         )}
         style={{
           borderRadius: `calc(${borderRadius} * 0.96)`,

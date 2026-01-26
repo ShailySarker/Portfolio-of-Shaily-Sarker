@@ -439,24 +439,38 @@ const ProjectsSection = () => {
                 <X className="w-5 h-5" />
               </motion.button>
 
-              {/* Project Image */}
-              <div className="relative h-64 overflow-hidden rounded-t-3xl">
-                <img
-                  src={selectedProject.image}
-                  alt={selectedProject.title}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent" />
+              {/* Project Image - with scroll on hover */}
+              <div className="relative xl:h-96 lg:h-80 md:h-72 h-64 overflow-hidden rounded-t-3xl group/modal-img">
+                <motion.div
+                  className="absolute top-0 left-0 w-full"
+                  initial={{ y: 0 }}
+                  whileHover={{ y: "calc(-100% + 256px)" }}
+                  transition={{
+                    duration: 5,
+                    ease: "easeInOut",
+                  }}
+                  style={{
+                    height: "auto",
+                    minHeight: "100%",
+                  }}
+                >
+                  <img
+                    src={selectedProject.image}
+                    alt={selectedProject.title}
+                    className="w-full object-cover"
+                  />
+                </motion.div>
+                <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent opacity-60 pointer-events-none" />
               </div>
 
-              <div className="p-8 -mt-16 relative">
+              <div className="p-8 -mt-20 relative">
                 {/* Header */}
                 <div className="flex items-center gap-4 mb-6">
                   <div>
-                    <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-2">
+                    <span className="inline-block px-3 py-1 rounded-full bg-background text-background-foreground md:text-sm text-xs font-medium mb-2">
                       {selectedProject.category}
                     </span>
-                    <h3 className="text-2xl font-bold">
+                    <h3 className="text-2xl font-bold xl:mt-10 lg:mt-8 md:mt-9 mt-8">
                       {selectedProject.title}
                     </h3>
                   </div>
@@ -526,24 +540,24 @@ const ProjectsSection = () => {
                 </div>
 
                 {/* Links */}
-                <div className="flex gap-4">
+                <div className="flex md:flex-row flex-col items-center md:gap-4 gap-2 ">
                   <MovingBorderButton
                     as="a"
                     href={selectedProject.liveUrl}
-                    containerClassName="flex-1"
+                    containerClassName="md:flex-1"
                     className="w-full justify-center gap-2"
                   >
-                    <ExternalLink className="w-4 h-4" />
+                    <ExternalLink className="w-4 h-4 md:mr-0 mr-2" />
                     Live Demo
                   </MovingBorderButton>
                   {selectedProject.githubUrl && (
                     <MovingBorderButton
                       as="a"
                       href={selectedProject.githubUrl}
-                      containerClassName="flex-1"
+                      containerClassName="md:flex-1"
                       className="w-full justify-center gap-2"
                     >
-                      <Github className="w-4 h-4" />
+                      <Github className="w-4 h-4 md:mr-0 mr-2" />
                       View Code
                     </MovingBorderButton>
                   )}
