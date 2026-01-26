@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { ReactNode } from "react";
 import {
   motion,
@@ -46,11 +47,11 @@ export function MovingBorder({
 
   const x = useTransform(
     progress,
-    (val) => pathRef.current?.getPointAtLength(val).x || 0
+    (val) => pathRef.current?.getPointAtLength(val).x || 0,
   );
   const y = useTransform(
     progress,
-    (val) => pathRef.current?.getPointAtLength(val).y || 0
+    (val) => pathRef.current?.getPointAtLength(val).y || 0,
   );
 
   const transform = useMotionTemplate`translateX(${x}px) translateY(${y}px) translateX(-50%) translateY(-50%)`;
@@ -104,7 +105,7 @@ const MovingBorderButton = ({
     <Component
       className={cn(
         "bg-transparent relative h-12 w-fit p-[1px] overflow-hidden group/btn flex items-center justify-center",
-        containerClassName
+        containerClassName,
       )}
       style={{
         borderRadius: borderRadius,
@@ -119,11 +120,15 @@ const MovingBorderButton = ({
           <div
             className={cn(
               "h-20 w-20 opacity-[0.8]",
-              borderGlowColor ? "" : "bg-[radial-gradient(hsl(var(--primary))_40%,transparent_60%)]",
-              borderClassName
+              borderGlowColor
+                ? ""
+                : "bg-[radial-gradient(hsl(var(--primary))_40%,transparent_60%)]",
+              borderClassName,
             )}
             style={{
-              background: borderGlowColor ? `radial-gradient(${borderGlowColor} 40%, transparent 60%)` : undefined
+              background: borderGlowColor
+                ? `radial-gradient(${borderGlowColor} 40%, transparent 60%)`
+                : undefined,
             }}
           />
         </MovingBorder>
@@ -136,7 +141,6 @@ const MovingBorderButton = ({
           "relative border border-border backdrop-blur-xl text-foreground flex items-center justify-center w-full h-full text-sm font-bold antialiased px-10 transition-all duration-300",
           // Fallback to bg-card if no background class is provided in className
           !className?.includes("bg-") && "bg-card hover:bg-primary/5",
-          
         )}
         style={{
           borderRadius: `calc(${borderRadius} * 0.96)`,

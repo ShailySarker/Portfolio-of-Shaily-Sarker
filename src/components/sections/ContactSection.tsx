@@ -108,13 +108,6 @@ const ContactSection = () => {
       const validated = contactSchema.parse(formData);
 
       if (formRef.current) {
-        // REPLACE THESE WITH YOUR ACTUAL EMAILJS SERVICE_ID, TEMPLATE_ID, AND PUBLIC_KEY
-        // await emailjs.sendForm(
-        //   "service_YOUR_SERVICE_ID",
-        //   "template_YOUR_TEMPLATE_ID",
-        //   formRef.current,
-        //   "YOUR_PUBLIC_KEY",
-        // );
         await emailjs.sendForm(
           import.meta.env.VITE_SERVICE_ID,
           import.meta.env.VITE_TEMPLATE_ID,
@@ -354,7 +347,7 @@ const ContactSection = () => {
                     </>
                   ) : (
                     <>
-                      <Send className="w-4 h-4" />
+                      <Send className="w-4 h-4 mr-2" />
                       Send Message
                     </>
                   )}

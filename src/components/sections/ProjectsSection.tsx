@@ -380,7 +380,7 @@ const ProjectsSection = () => {
                           className="w-full justify-center gap-2 text-sm"
                         >
                           View Details
-                          <ChevronRight className="w-4 h-4" />
+                          <ChevronRight className="w-4 h-4 ml-2" />
                         </MovingBorderButton>
                       </div>
                     </div>
@@ -400,7 +400,7 @@ const ProjectsSection = () => {
             onClick={() => setShowAll(!showAll)}
             className="gap-2"
           >
-            <Layers className="w-4 h-4" />
+            <Layers className="w-4 h-4 mr-2" />
             {showAll ? "Show Less" : "View All Projects"}
             <motion.span
               animate={{ rotate: showAll ? 180 : 0 }}
@@ -547,7 +547,7 @@ const ProjectsSection = () => {
                     containerClassName="md:flex-1"
                     className="w-full justify-center gap-2"
                   >
-                    <ExternalLink className="w-4 h-4 md:mr-0 mr-2" />
+                    <ExternalLink className="w-4 h-4 mr-2" />
                     Live Demo
                   </MovingBorderButton>
                   {selectedProject.githubUrl && (
@@ -557,7 +557,7 @@ const ProjectsSection = () => {
                       containerClassName="md:flex-1"
                       className="w-full justify-center gap-2"
                     >
-                      <Github className="w-4 h-4 md:mr-0 mr-2" />
+                      <Github className="w-4 h-4 mr-2" />
                       View Code
                     </MovingBorderButton>
                   )}

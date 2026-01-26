@@ -224,7 +224,7 @@ const HeroSection = () => {
                 className="gap-2 bg-primary text-primary-foreground hover:bg-primary/90 border-none"
                 borderClassName="bg-[radial-gradient(hsl(var(--accent))_40%,transparent_60%)]"
               >
-                <Download className="w-4 h-4" />
+                <Download className="w-4 h-4 mr-2" />
                 Download Resume
               </MovingBorderButton>
               <MovingBorderButton
@@ -234,7 +234,7 @@ const HeroSection = () => {
                 rel="noopener noreferrer"
                 className="gap-2 bg-secondary/50 border-primary/20 hover:bg-secondary"
               >
-                <Eye className="w-4 h-4" />
+                <Eye className="w-4 h-4 mr-2" />
                 View Resume
               </MovingBorderButton>
             </motion.div>
@@ -288,8 +288,12 @@ const HeroSection = () => {
                   <Briefcase className="w-5 h-5" />
                 </div>
                 <div>
-                  <p className="text-[10px] uppercase font-bold text-muted-foreground tracking-wider">Years of</p>
-                  <p className="text-sm font-bold text-foreground">2+ Experience</p>
+                  <p className="text-[10px] uppercase font-bold text-muted-foreground tracking-wider">
+                    Years of
+                  </p>
+                  <p className="text-sm font-bold text-foreground">
+                    2+ Experience
+                  </p>
                 </div>
               </motion.div>
 
@@ -304,8 +308,12 @@ const HeroSection = () => {
                   <Rocket className="w-5 h-5" />
                 </div>
                 <div>
-                  <p className="text-[10px] uppercase font-bold text-muted-foreground tracking-wider">Completed</p>
-                  <p className="text-sm font-bold text-foreground">25+ Projects</p>
+                  <p className="text-[10px] uppercase font-bold text-muted-foreground tracking-wider">
+                    Completed
+                  </p>
+                  <p className="text-sm font-bold text-foreground">
+                    25+ Projects
+                  </p>
                 </div>
               </motion.div>
 
