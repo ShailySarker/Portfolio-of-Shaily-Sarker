@@ -32,7 +32,7 @@ const socialLinks = [
   },
   {
     icon: Linkedin,
-    href: "https://www.linkedin.com/in/shaily-sarker-905757387",
+    href: "https://www.linkedin.com/in/shaily-sarker",
     label: "LinkedIn",
   },
   { icon: Github, href: "https://github.com/ShailySarker", label: "GitHub" },

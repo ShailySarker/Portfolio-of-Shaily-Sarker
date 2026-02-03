@@ -131,7 +131,7 @@ const socialLinks = [
   {
     name: "LinkedIn",
     icon: Linkedin,
-    href: "https://www.linkedin.com/in/shaily-sarker-905757387",
+    href: "https://www.linkedin.com/in/shaily-sarker",
   },
   {
     name: "Gmail",
