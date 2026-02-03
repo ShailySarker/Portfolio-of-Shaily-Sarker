@@ -136,7 +136,7 @@ const socialLinks = [
   {
     name: "Gmail",
     icon: Mail,
-    href: "mailto:shailysarker11@gmail.com",
+    href: "mailto:shailysarkerofficial@gmail.com",
   },
   {
     name: "WhatsApp",

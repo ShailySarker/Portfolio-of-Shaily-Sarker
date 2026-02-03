@@ -21,8 +21,8 @@ const contactInfo = [
   {
     icon: Mail,
     label: "Email",
-    value: "shailysarker11@gmail.com",
-    href: "mailto:shailysarker11@gmail.com",
+    value: "shailysarkerofficial@gmail.com",
+    href: "mailto:shailysarkerofficial@gmail.com",
   },
   {
     icon: Phone,
@@ -46,7 +46,7 @@ const contactInfo = [
 
 const socialLinks = [
   // { icon: IconPhone, href: "tel:+8801730465918", label: "Phone" },
-  // { icon: Mail, href: "mailto:shailysarker11@gmail.com", label: "Gmail" },
+  // { icon: Mail, href: "mailto:shailysarkerofficial@gmail.com", label: "Gmail" },
   // {
   //   icon: IconBrandWhatsapp,
   //   href: "https://wa.me/8801730465918",

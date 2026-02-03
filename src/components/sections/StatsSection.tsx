@@ -11,7 +11,7 @@ const stats = [
 
 const StatsSection = () => {
   return (
-    <section className="relative py-16 overflow-hidden bg-gradient-to-r from-primary/10 via-accent/5 to-primary/10">
+    <section className="max-w-7xl relative py-16 overflow-hidden bg-gradient-to-r from-primary/10 via-accent/5 to-primary/10">
       <div className="mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-8">
           {stats.map((stat, index) => (

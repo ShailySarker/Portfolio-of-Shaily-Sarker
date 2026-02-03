@@ -17,7 +17,7 @@ const experiences = [
       "Collaborated with cross-functional teams to design and implement new features",
       "Optimized application performance through code refactoring and performance tuning",
       "Participated in code reviews and knowledge sharing sessions",
-      "Led a team of 4 developers in delivering critical features on time",
+      "Lead a team of 4 developers in delivering critical features on time",
       "Reduced application load time by 40% through performance optimization",
       "Implemented payment gateways and user authentication using JWT and Passport.js",
     ],

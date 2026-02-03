@@ -24,7 +24,7 @@ const socialLinks = [
     href: "tel:+8801730465918",
     label: "Phone",
   },
-  { icon: Mail, href: "mailto:shailysarker11@gmail.com", label: "Email" },
+  { icon: Mail, href: "mailto:shailysarkerofficial@gmail.com", label: "Email" },
   {
     icon: IconBrandWhatsapp,
     href: "https://wa.me/8801730465918",
