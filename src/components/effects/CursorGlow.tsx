@@ -1,187 +1,133 @@
 import { useEffect, useState, useCallback } from 'react';
-import { motion, useMotionValue, useSpring } from 'framer-motion';
+import { motion, useMotionValue, useSpring, useMotionTemplate } from 'framer-motion';
 
 const CursorGlow = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
-  const cursorX = useMotionValue(-100);
-  const cursorY = useMotionValue(-100);
   
-  const springConfig = { damping: 20, stiffness: 400 };
-  const cursorXSpring = useSpring(cursorX, springConfig);
-  const cursorYSpring = useSpring(cursorY, springConfig);
+  const mouseX = useMotionValue(-100);
+  const mouseY = useMotionValue(-100);
+  
+  // Smoother spring configuration for that "liquid" feel
+  const springConfig = { damping: 30, stiffness: 120, mass: 0.5 };
+  const cursorX = useSpring(mouseX, springConfig);
+  const cursorY = useSpring(mouseY, springConfig);
 
   const handleMouseMove = useCallback((e: MouseEvent) => {
-    cursorX.set(e.clientX);
-    cursorY.set(e.clientY);
-    setIsVisible(true);
-  }, [cursorX, cursorY]);
-
-  const handleMouseEnterInteractive = useCallback(() => {
-    setIsHovering(true);
-  }, []);
-
-  const handleMouseLeaveInteractive = useCallback(() => {
-    setIsHovering(false);
-  }, []);
+    mouseX.set(e.clientX);
+    mouseY.set(e.clientY);
+    if (!isVisible) setIsVisible(true);
+  }, [mouseX, mouseY, isVisible]);
 
   useEffect(() => {
-    const hideCursor = () => setIsVisible(false);
+    const handleMouseEnter = () => setIsVisible(true);
+    const handleMouseLeave = () => setIsVisible(false);
 
     window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('mouseleave', hideCursor);
+    document.addEventListener('mouseenter', handleMouseEnter);
+    document.addEventListener('mouseleave', handleMouseLeave);
 
-    // Add hover detection for interactive elements
-    const interactiveElements = document.querySelectorAll('a, button, input, textarea, [role="button"]');
+    const interactiveElements = document.querySelectorAll('a, button, input, textarea, [role="button"], .group');
+    
+    const handleHoverStart = () => setIsHovering(true);
+    const handleHoverEnd = () => setIsHovering(false);
+
     interactiveElements.forEach((el) => {
-      el.addEventListener('mouseenter', handleMouseEnterInteractive);
-      el.addEventListener('mouseleave', handleMouseLeaveInteractive);
+      el.addEventListener('mouseenter', handleHoverStart);
+      el.addEventListener('mouseleave', handleHoverEnd);
     });
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('mouseleave', hideCursor);
+      document.removeEventListener('mouseenter', handleMouseEnter);
+      document.removeEventListener('mouseleave', handleMouseLeave);
       interactiveElements.forEach((el) => {
-        el.removeEventListener('mouseenter', handleMouseEnterInteractive);
-        el.removeEventListener('mouseleave', handleMouseLeaveInteractive);
+        el.removeEventListener('mouseenter', handleHoverStart);
+        el.removeEventListener('mouseleave', handleHoverEnd);
       });
     };
-  }, [handleMouseMove, handleMouseEnterInteractive, handleMouseLeaveInteractive]);
+  }, [handleMouseMove]);
 
-  // Update interactive element listeners when DOM changes
-  useEffect(() => {
-    const observer = new MutationObserver(() => {
-      const interactiveElements = document.querySelectorAll('a, button, input, textarea, [role="button"]');
-      interactiveElements.forEach((el) => {
-        el.removeEventListener('mouseenter', handleMouseEnterInteractive);
-        el.removeEventListener('mouseleave', handleMouseLeaveInteractive);
-        el.addEventListener('mouseenter', handleMouseEnterInteractive);
-        el.addEventListener('mouseleave', handleMouseLeaveInteractive);
-      });
-    });
-
-    observer.observe(document.body, { childList: true, subtree: true });
-    return () => observer.disconnect();
-  }, [handleMouseEnterInteractive, handleMouseLeaveInteractive]);
+  // Dynamic values for styles
+  const size = isHovering ? 80 : 25;
+  const glowSize = isHovering ? 400 : 300;
+  const opacity = isVisible ? 1 : 0;
 
   return (
     <>
-      {/* Outer large glow - ambient effect */}
-      <motion.div
-        className="pointer-events-none fixed top-0 left-0 z-[9999] hidden lg:block"
-        style={{
-          x: cursorXSpring,
-          y: cursorYSpring,
-          translateX: '-50%',
-          translateY: '-50%',
-        }}
-      >
+      <div className="pointer-events-none fixed inset-0 z-[9999] overflow-hidden">
+        {/* Ambient Glow Trail */}
         <motion.div
-          className="rounded-full"
-          animate={{ 
-            opacity: isVisible ? 0.4 : 0,
-            scale: isHovering ? 1.5 : 1,
-            width: isHovering ? 400 : 300,
-            height: isHovering ? 400 : 300,
-          }}
-          transition={{ duration: 0.4, ease: 'easeOut' }}
-          style={{
-            background: 'radial-gradient(circle, hsl(var(--primary) / 0.15) 0%, hsl(var(--accent) / 0.08) 40%, transparent 70%)',
-            filter: 'blur(40px)',
-          }}
-        />
-      </motion.div>
+            className="absolute hidden lg:block"
+            style={{
+                x: cursorX,
+                y: cursorY,
+                translateX: '-50%',
+                translateY: '-50%',
+            }}
+        >
+            <motion.div
+                animate={{
+                    width: glowSize,
+                    height: glowSize,
+                    opacity: isVisible ? 0.3 : 0,
+                }}
+                className="rounded-full"
+                style={{
+                    background: 'radial-gradient(circle, hsl(var(--primary) / 0.15) 0%, transparent 70%)',
+                    filter: 'blur(50px)',
+                }}
+            />
+        </motion.div>
 
-      {/* Middle gradient ring */}
-      <motion.div
-        className="pointer-events-none fixed top-0 left-0 z-[9999] hidden lg:block"
-        style={{
-          x: cursorXSpring,
-          y: cursorYSpring,
-          translateX: '-50%',
-          translateY: '-50%',
-        }}
-      >
+        {/* Liquid Main Cursor */}
         <motion.div
-          className="rounded-full"
-          animate={{ 
-            opacity: isVisible ? 0.6 : 0,
-            scale: isHovering ? 1.8 : 1,
-            width: isHovering ? 80 : 50,
-            height: isHovering ? 80 : 50,
-            rotate: 360,
-          }}
-          transition={{ 
-            opacity: { duration: 0.2 },
-            scale: { duration: 0.3, ease: 'easeOut' },
-            rotate: { duration: 8, repeat: Infinity, ease: 'linear' }
-          }}
-          style={{
-            background: 'conic-gradient(from 0deg, hsl(var(--primary)), hsl(var(--accent)), hsl(var(--primary)))',
-            filter: 'blur(12px)',
-          }}
-        />
-      </motion.div>
+            className="absolute hidden lg:block"
+            style={{
+                x: cursorX,
+                y: cursorY,
+                translateX: '-50%',
+                translateY: '-50%',
+            }}
+        >
+            <motion.div
+                animate={{
+                    width: size,
+                    height: size,
+                    opacity: opacity,
+                    scale: isHovering ? 1.2 : 1,
+                }}
+                transition={{ type: "spring", damping: 20, stiffness: 200 }}
+                className="relative flex items-center justify-center rounded-full border border-primary/30 bg-primary/5 backdrop-blur-[2px]"
+            >
+                {/* Center point */}
+                <motion.div 
+                    animate={{
+                        scale: isHovering ? 0 : 1,
+                        opacity: isHovering ? 0 : 1
+                    }}
+                    className="w-1.5 h-1.5 rounded-full bg-primary shadow-[0_0_10px_hsl(var(--primary))]"
+                />
+                
+                {/* Hover ring animation */}
+                {isHovering && (
+                    <motion.div
+                        layoutId="cursorHover"
+                        initial={{ scale: 0.5, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        className="absolute inset-0 rounded-full border-2 border-primary shadow-[0_0_15px_hsl(var(--primary)/0.5)]"
+                    />
+                )}
+            </motion.div>
+        </motion.div>
+      </div>
 
-      {/* Inner core - soft glow instead of dot */}
-      <motion.div
-        className="pointer-events-none fixed top-0 left-0 z-[9999] hidden lg:block"
-        style={{
-          x: cursorXSpring,
-          y: cursorYSpring,
-          translateX: '-50%',
-          translateY: '-50%',
-        }}
-      >
-        <motion.div
-          className="rounded-full"
-          animate={{ 
-            opacity: isVisible ? 0.9 : 0,
-            scale: isHovering ? 1.5 : 1,
-            width: isHovering ? 24 : 16,
-            height: isHovering ? 24 : 16,
-          }}
-          transition={{ duration: 0.2, ease: 'easeOut' }}
-          style={{
-            background: 'radial-gradient(circle, hsl(var(--primary)) 0%, hsl(var(--primary) / 0.5) 60%, transparent 100%)',
-            filter: 'blur(4px)',
-          }}
-        />
-      </motion.div>
-
-      {/* Trailing particles effect */}
-      <motion.div
-        className="pointer-events-none fixed top-0 left-0 z-[9998] hidden lg:block"
-        style={{
-          x: cursorXSpring,
-          y: cursorYSpring,
-          translateX: '-50%',
-          translateY: '-50%',
-        }}
-      >
-        <motion.div
-          className="rounded-full"
-          animate={{ 
-            opacity: isVisible ? 0.3 : 0,
-            scale: [1, 1.2, 1],
-          }}
-          transition={{ 
-            opacity: { duration: 0.3 },
-            scale: { duration: 2, repeat: Infinity, ease: 'easeInOut' }
-          }}
-          style={{
-            width: 120,
-            height: 120,
-            background: 'radial-gradient(circle, hsl(var(--accent) / 0.2) 0%, transparent 70%)',
-            filter: 'blur(20px)',
-          }}
-        />
-      </motion.div>
-
-      {/* Hide default cursor on desktop */}
       <style>{`
         @media (min-width: 1024px) {
           * {
+            cursor: none !important;
+          }
+          a, button, [role="button"] {
             cursor: none !important;
           }
         }

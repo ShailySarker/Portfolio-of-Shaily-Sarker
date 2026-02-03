@@ -18,6 +18,7 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const [isDark, setIsDark] = useState(true);
+  const [isMenuAnimating, setIsMenuAnimating] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -63,7 +64,7 @@ const Navbar = () => {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
         scrolled
           ? "bg-background/80 backdrop-blur-xl border-b border-border/50 shadow-lg"
           : "bg-transparent",
@@ -152,27 +153,38 @@ const Navbar = () => {
         {/* Mobile Navigation */}
         <motion.div
           initial={false}
+          onAnimationStart={() => setIsMenuAnimating(true)}
+          onAnimationComplete={() => setIsMenuAnimating(isOpen)}
           animate={
-            isOpen ? { height: "auto", opacity: 1 } : { height: 0, opacity: 0 }
+            isOpen ? { height: "auto", opacity: 1, y: 0 } : { height: 0, opacity: 0, y: -10 }
           }
+          transition={{ duration: 0.3, ease: "easeOut" }}
           className="lg:hidden overflow-hidden"
         >
-          <div className="pb-4 space-y-2">
+          <div className="mx-4 mb-6 p-4 glass-card shadow-2xl space-y-2 ring-1 ring-primary/10 border-primary/20">
             {navItems.map((item, index) => (
               <motion.button
                 key={item.name}
                 onClick={() => handleNavClick(item.href)}
                 initial={{ x: -20, opacity: 0 }}
                 animate={isOpen ? { x: 0, opacity: 1 } : { x: -20, opacity: 0 }}
-                transition={{ delay: index * 0.05 }}
+                transition={{ delay: index * 0.05 + 0.1 }}
                 className={cn(
-                  "block w-full text-left px-4 py-3 rounded-xl text-sm font-medium transition-colors",
+                  "block w-full text-left px-4 py-3.5 rounded-2xl text-sm font-medium transition-all duration-300",
                   activeSection === item.href.slice(1)
-                    ? "bg-primary/10 text-primary"
-                    : "text-muted-foreground hover:bg-secondary hover:text-foreground",
+                    ? "bg-primary/15 text-primary shadow-sm ring-1 ring-primary/20 scale-[1.02]"
+                    : "text-muted-foreground hover:bg-secondary/80 hover:text-foreground hover:translate-x-1",
                 )}
               >
-                {item.name}
+                <div className="flex items-center justify-between">
+                  <span>{item.name}</span>
+                  {activeSection === item.href.slice(1) && (
+                    <motion.div
+                      layoutId="mobileActiveDot"
+                      className="w-1.5 h-1.5 rounded-full bg-primary"
+                    />
+                  )}
+                </div>
               </motion.button>
             ))}
           </div>
